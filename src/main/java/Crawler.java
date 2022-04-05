@@ -10,8 +10,7 @@ import java.util.LinkedList;
 
 public class Crawler {
     static final String HREF_TAG = "<a href=\"http";
-    static LinkedList<URLDepthPair> allSitesSeen =
-            new LinkedList<URLDepthPair>();
+    static LinkedList<URLDepthPair> allSitesSeen = new LinkedList<URLDepthPair>();
     static LinkedList<URLDepthPair> toVisit = new LinkedList<URLDepthPair>();
 
 
@@ -32,11 +31,8 @@ public class Crawler {
                 sock.connect(new InetSocketAddress(currPair.getHost(), 80), 3000);
                 sock.setSoTimeout(3000);
                 System.out.println("Connected to " + currPair.getURLString());
-                PrintWriter out =
-                        new PrintWriter(sock.getOutputStream(), true);
-                BufferedReader in =
-                        new BufferedReader(
-                                new InputStreamReader(sock.getInputStream()));
+                PrintWriter out = new PrintWriter(sock.getOutputStream(), true);
+                BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 
                 out.println("GET " + currPair.getPath() + " HTTP/1.1");
                 out.println("Host: " + currPair.getHost());
@@ -64,10 +60,8 @@ public class Crawler {
                             }
                         }
                         String newUrl = sb.toString();
-                        if (foundFullLink && depth < maxDepth &&
-                                !seenURLs.contains(newUrl)) {
-                            URLDepthPair newPair =
-                                    new URLDepthPair(newUrl, depth + 1);
+                        if (foundFullLink && depth < maxDepth && !seenURLs.contains(newUrl)) {
+                            URLDepthPair newPair = new URLDepthPair(newUrl, depth + 1);
                             toVisit.add(newPair);
                             seenURLs.add(newUrl);
                         }
