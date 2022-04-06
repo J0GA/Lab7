@@ -34,11 +34,11 @@ public class Crawler {
                 PrintWriter out = new PrintWriter(sock.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 
-                out.println("GET " + currPair.getPath() + " HTTP/1.1");
-                out.println("Host: " + currPair.getHost());
-                out.println("Connection: close");
-                out.println();
-                out.flush();
+                System.out.println("GET " + currPair.getPath() + " HTTP/1.1");
+                System.out.println("Host: " + currPair.getHost());
+                System.out.println("Connection: close");
+                System.out.println();
+                System.out.flush();
 
                 String line;
                 int lineLength;
